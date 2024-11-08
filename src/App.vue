@@ -5,9 +5,9 @@
     <div class="conteiner">
       <div class="field">
         <input type="text" v-model="text">
-        <button><img src="./assets/Vector.png" alt=""></button>
+        <button @click="addTodo"><img src="./assets/Vector.png" alt=""></button>
     </div>
-      <my-button-block @click="addTodo"></my-button-block>
+      <my-button-block></my-button-block>
       <MyTodoList :title='addTodo()'/>
     </div>
   </main>
