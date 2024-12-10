@@ -74,10 +74,10 @@ export default {
       return Math.random().toString(16).substring(2);
     },
     newTask() {
-      // this.arrTodo = this.arrTodo.map((i) => i.editTask)
+      
     },
     onToogleDone() {
-      // return this.addTask.checked = !this.addTask.checked
+      
     },
   },
   watch: {
