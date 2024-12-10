@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      number: 1,
+      number: 11,
     };
   },
   computed: {
