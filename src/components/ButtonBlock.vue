@@ -19,7 +19,6 @@
       Pending
     </button>
   </div>
-  <!-- <p>{{ $store.state.test }}</p> -->
 </template>
 
 <script>
