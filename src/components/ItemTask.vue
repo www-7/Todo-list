@@ -5,7 +5,7 @@
         type="checkbox"
         v-model="checked"
       />
-      <label class="text" for="item.id">{{ modelValue }}</label>
+      <label class="text" for="item.id" v-if="!edit">{{ modelValue }}</label>
       <input
         type="text"
         v-if="edit"
