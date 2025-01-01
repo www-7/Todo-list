@@ -21,7 +21,7 @@
       <button
         v-if="edit"
         @click="edit = !edit"
-        class="edit btn displayed">
+        class="edit btn">
         <img
           
           src="/src/assets/Pencil.png"
@@ -30,7 +30,7 @@
       <button
         v-if="!edit"
         @click="edit = !edit"
-        class="active btn displayed">
+        class="active btn">
         <img
           
           src="/src/assets/check.png"
@@ -38,7 +38,7 @@
       </button>
       <button
         @click="$emit('delete')"
-        class="delete btn displayed">
+        class="delete btn">
         <img
           
           src="/src/assets/delete.png"
@@ -102,8 +102,8 @@
   }
   .btn_block {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
     /* gap: 10px; */
   }
   .edit {
@@ -116,6 +116,9 @@
     background: #ff0000;
   }
   .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-right: 10px;
     width: 20px;
     height: 20px;
@@ -130,10 +133,10 @@
   .text {
     text-transform: capitalize;
   }
-  .displayed {
+  /* .displayed {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+  } */
   /* #00BA00 */
 </style>
