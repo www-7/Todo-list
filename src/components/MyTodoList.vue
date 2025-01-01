@@ -8,7 +8,7 @@
         :id="id" />
       <label
         v-if="edit"
-        :class="checked? 'text_decoration' : 'text'"
+        :class="checked ? 'text_decoration' : 'text'"
         :for="id"
         >{{ textValue }}</label
       >
@@ -49,8 +49,8 @@
       },
       id: {
         type: Number,
-        require: true
-      }
+        require: true,
+      },
     },
     emits: ['delete', 'text', 'checked'],
     data() {

@@ -1,7 +1,8 @@
 <template>
   <div class="btn-menu">
     <button
-      class="btn__click"
+      class="btn"
+      :class="{ 'btn--active': modelValue === 'all' }"
       @click="clickAll">
       Все
     </button>
@@ -21,23 +22,28 @@
 
 <script>
   export default {
+    props: {
+      modelValue: {
+        type: String,
+      },
+    },
     data() {
       return {
-        // clicked: true,
+        clicked: this.clickAll,
         // active: true
       };
     },
     methods: {
       clickAll() {
-        this.$emit('update:modelValue', 'all')
+        this.$emit('update:modelValue', 'all');
       },
       clickComplated() {
-        this.$emit('update:modelValue', 'complated')
+        this.$emit('update:modelValue', 'complated');
       },
       clickPending() {
-        this.$emit('update:modelValue', 'pending')
-      }
-    }
+        this.$emit('update:modelValue', 'pending');
+      },
+    },
   };
 </script>
 
@@ -45,38 +51,22 @@
   .btn-menu {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
     width: 390px;
     margin-bottom: 15px;
   }
-  .btn__сlick {
+  .btn--active {
     background: #8f8f8f;
     color: #ffffff;
-    width: 124px;
-    right: 30px;
-    border: 1px solid #cfcfcf;
-    border-radius: 6px;
-    font-family: Nunito;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 19.1px;
-    text-align: center;
-    cursor: pointer
   }
   .btn {
-    width: 124px;
-    right: 30px;
+    width: 100%;
+    height: 25px;
     border: 1px solid #cfcfcf;
     border-radius: 6px;
     font-family: Nunito;
     font-size: 14px;
     font-weight: 700;
-    line-height: 19.1px;
-    text-align: center;
     cursor: pointer;
   }
-  btn:last-child {
-    margin-right: 0;
-  }
-  
-  
 </style>
