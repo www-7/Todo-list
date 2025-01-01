@@ -8,11 +8,13 @@
     </button>
     <button
       class="btn"
+      :class="{ 'btn--active': modelValue === 'complated' }"
       @click="clickComplated">
       Выполнено
     </button>
     <button
       class="btn"
+      :class="{ 'btn--active': modelValue === 'pending' }"
       @click="clickPending">
       В ожидании
     </button>
@@ -52,7 +54,7 @@
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    width: 390px;
+    width: 100%;
     margin-bottom: 15px;
   }
   .btn--active {

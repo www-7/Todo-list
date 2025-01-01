@@ -1,5 +1,5 @@
 <template>
-  <div class="field">
+  <div class="fields">
     <input
       type="text"
       v-model.trim="text" />
@@ -30,23 +30,25 @@
 </script>
 
 <style scoped>
+  .fields {
+    display: flex;
+    margin-bottom: 15px;
+    width: 100%;
+  }
   button {
     background: #13e328;
     border: none;
     width: 44px;
     height: 44px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   input {
     border: 1px solid #e1e1e1;
     background: #ffffff;
-    width: 350px;
+    width: 100%;
     height: 40px;
-  }
-  .field {
-    display: flex;
-    /* justify-content: center; */
-    margin-bottom: 15px;
-    width: 390px;
   }
 </style>
