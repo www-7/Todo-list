@@ -9,14 +9,14 @@
     </button>
     <button
       class="btn"
-      :class="{ 'btn--active': modelValue === 'Complated' }"
+      :class="{ 'btn--active': modelValue === 'completed' }"
       @click="clickCompleted"
     >
       Complated
     </button>
     <button
       class="btn"
-      :class="{ 'btn--active': modelValue === 'Pending' }"
+      :class="{ 'btn--active': modelValue === 'pending' }"
       @click="clickPending"
     >
       Pending
@@ -28,7 +28,8 @@
 export default {
   props: {
     modelValue: {
-      type: String
+      type: String,
+      required: true
     }
   },
   data() {
