@@ -3,13 +3,19 @@
     <div class="list">
       <input
         type="checkbox"
-        v-model="checked"
+        :id="id"
+        v-model="checkedValue"
       />
-      <label class="text" for="item.id" v-if="!edit">{{ modelValue }}</label>
-      <input
-        type="text"
+      <label
         v-if="edit"
-        v-model.trim="value"
+        :class="checked? 'text_decoration' : 'text'"
+        :for="id"
+        >{{ noteValue }}</label
+      >
+      <input
+        v-if="!edit"
+        type="text"
+        v-model.trim="noteValue"
         v-focus
       />
     </div>
@@ -38,7 +44,7 @@
 
 <script>
 // import { onMounted, ref } from 'vue';
-
+import focusDirective from './focusDirective';
 export default {
   // setup() {
   //   const inputEdit = ref()
@@ -46,32 +52,47 @@ export default {
   //   return [inputEdit]
   // },
   props: {
-    modelValue: {
-      type: String
+    note: {
+      type: String,
+    },
+    checked: {
+      type: Boolean,
+    },
+    id: {
+      type: String,
     },
   },
   computed: {
-    value: {
+    noteValue: {
       get() {
-        return this.modelValue
+        return this.note;
       },
       set(value) {
-        this.$emit('update:modelValue', value)
-      }
-    }
+        this.$emit('update:note', value);
+      },
+    },
+    checkedValue: {
+      get() {
+        return this.checked;
+      },
+      set(value) {
+        this.$emit('update:checked', value);
+      },
+    },
   },
   // inject: ['test'],
-  emits: {
-    delete() {},
-  },
+  emits: ['update:note', 'update:checked', 'delete'],
+  directives: focusDirective,
   data() {
     return {
-      edit: false,
-      checked: false
+      edit: true,
+      // checked: false,
     };
   },
   methods: {
-    
+    // checkbox() {
+    //   this.$emit('checkbox', this.checked);
+    // },
   },
 };
 </script>
@@ -81,7 +102,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 390px;
+  width: 100%;
   height: 40px;
   border: 1px solid #e1e1e1;
 }
@@ -97,5 +118,12 @@ export default {
   height: 20px;
   border-radius: 5px;
   cursor: pointer;
+}
+.text {
+  text-transform: capitalize;
+}
+.text_decoration {
+  text-decoration: line-through;
+  text-transform: capitalize;
 }
 </style>

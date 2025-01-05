@@ -2,19 +2,22 @@
   <div class="btn-menu">
     <button
       class="btn"
-      @click="$emit('update:model-value', 'all')"
+      :class="{ 'btn--active': modelValue === 'all' }"
+      @click="clickAll"
     >
       All
     </button>
     <button
       class="btn"
-      @click="$emit('update:modelValue', 'completed')"
+      :class="{ 'btn--active': modelValue === 'Complated' }"
+      @click="clickCompleted"
     >
       Complated
     </button>
     <button
       class="btn"
-      @click="$emit('update:modelValue', 'pending')"
+      :class="{ 'btn--active': modelValue === 'Pending' }"
+      @click="clickPending"
     >
       Pending
     </button>
@@ -23,10 +26,25 @@
 
 <script>
 export default {
+  props: {
+    modelValue: {
+      type: String
+    }
+  },
   data() {
     return {
-      active: '',
     };
+  },
+  methods: {
+    clickAll() {
+      this.$emit('update:model-value', 'all');
+    },
+    clickCompleted() {
+      this.$emit('update:modelValue', 'completed');
+    },
+    clickPending() {
+      this.$emit('update:modelValue', 'pending');
+    },
   },
 };
 </script>
@@ -35,13 +53,17 @@ export default {
 .btn-menu {
   display: flex;
   justify-content: space-between;
-  width: 390px;
+  gap: 10px;
+  width: 100%;
   margin-bottom: 15px;
 }
+.btn--active {
+  background: #8f8f8f;
+  color: #ffffff;
+}
 .btn {
-  /* margin-right: 10px; */
-  width: 124px;
-  right: 30px;
+  width:100%;
+  height: 25px;
   border: 1px solid #cfcfcf;
   border-radius: 6px;
   font-family: Nunito;
@@ -51,11 +73,8 @@ export default {
   text-align: center;
   cursor: pointer;
 }
-.btn:hover {
-  background: #8f8f8f;
-  color: #ffffff;
-}
-btn:last-child {
+
+/* btn:last-child {
   margin-right: 0;
-}
+} */
 </style>

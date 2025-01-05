@@ -4,15 +4,15 @@
     <div class="conteiner">
       <h2>Список задач {{ $store.state.test }}</h2>
       <input-task @add-task="addTask"></input-task>
-      <button-block v-model="filter"></button-block>
+      <button-block v-model="filters"></button-block>
       <!-- <component :is="myButtonBlock"></component> -->
       <item-task
         v-for="item in visibleItems"
         :key="item.id"
-        v-model="item.note"
+        :id="item.id"
+        v-model:note="item.note"
+        v-model:checked="item.checked"
         @delete="deleteTask(item.id)"
-        @toogle-done="onToogleDone"
-        @editTask="editTask"
       />
     </div>
   </main>
@@ -26,16 +26,17 @@ import ItemTask from './components/ItemTask.vue';
 import Test from './components/Test.vue';
 export default {
   components: {
-    Test,
+    // Test,
     InputTask,
     ButtonBlock,
     ItemTask,
   },
+
   data() {
     return {
       text: 'test',
       arrTodo: [],
-      filter: 'all', // 'all' 'completed' 'pending'
+      filters: 'all', // 'all' 'completed' 'pending'
     };
   },
   // provide() {
@@ -45,14 +46,14 @@ export default {
   // },
   computed: {
     visibleItems() {
-      if (this.filter === 'all') {
+      if (this.filters === 'all') {
         return this.arrTodo;
       }
-      if (this.filter === 'completed') {
-        return this.arrTodo.filter((i) => i.checked === false);
-      }
-      if (this.filter === 'pending') {
+      if (this.filters === 'completed') {
         return this.arrTodo.filter((i) => i.checked === true);
+      }
+      if (this.filters === 'pending') {
+        return this.arrTodo.filter((i) => i.checked === false);
       }
     },
   },
@@ -64,7 +65,7 @@ export default {
       this.arrTodo.push({
         note: task,
         id: this.generateId(),
-        checked: this.onToogleDone(),
+        checked: false,
       });
     },
     deleteTask(id) {
@@ -73,12 +74,9 @@ export default {
     generateId() {
       return Math.random().toString(16).substring(2);
     },
-    newTask() {
-      
-    },
-    onToogleDone() {
-      
-    },
+    // checkbox() {
+    // return
+    // }
   },
   watch: {
     arrTodo: {
@@ -97,22 +95,9 @@ export default {
   width: 25%;
   margin: 0 auto;
 }
-button {
-  background: #13e328;
-  width: 44px;
-  height: 44px;
-  cursor: pointer;
-}
-input {
-  border: 1px solid #e1e1e1;
-  background: #ffffff;
-  width: 350px;
-  height: 40px;
-}
 .field {
   display: flex;
-  /* justify-content: center; */
   margin-bottom: 15px;
-  width: 390px;
+  width: 100%;
 }
 </style>
