@@ -2,7 +2,8 @@
   <div class="fields">
     <input
       type="text"
-      v-model.trim="text" />
+      v-model.trim="text"
+      v-focus />
     <button @click="addTodo">
       <img
         src="../assets/Vector.png"
@@ -12,7 +13,11 @@
 </template>
 
 <script>
+import focusDirective from './focusDirective';
   export default {
+    directives: {
+      focus: focusDirective
+    },
     data() {
       return {
         text: null,

@@ -82,22 +82,8 @@
     width: 25%;
     margin: 0 auto;
   }
-  button {
-    background: #13e328;
-    border: none;
-    width: 44px;
-    height: 44px;
-    cursor: pointer;
-  }
-  input {
-    border: 1px solid #e1e1e1;
-    background: #ffffff;
-    width: 350px;
-    height: 40px;
-  }
   .field {
     display: flex;
-    /* justify-content: center; */
     margin-bottom: 15px;
     width: 390px;
   }

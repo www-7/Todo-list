@@ -31,7 +31,7 @@
     },
     data() {
       return {
-        clicked: this.clickAll,
+        // clicked: this.clickAll,
         // active: true
       };
     },

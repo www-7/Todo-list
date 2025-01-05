@@ -15,7 +15,8 @@
       <input
         v-if="!edit"
         type="text"
-        v-model.trim="textValue" />
+        v-model.trim="textValue"
+        v-focus />
     </div>
     <div class="btn_block">
       <button
@@ -23,7 +24,6 @@
         @click="edit = !edit"
         class="edit btn">
         <img
-          
           src="/src/assets/Pencil.png"
           alt="edit" />
       </button>
@@ -32,7 +32,6 @@
         @click="edit = !edit"
         class="active btn">
         <img
-          
           src="/src/assets/check.png"
           alt="edit" />
       </button>
@@ -40,7 +39,6 @@
         @click="$emit('delete')"
         class="delete btn">
         <img
-          
           src="/src/assets/delete.png"
           alt="delete" />
       </button>
@@ -49,6 +47,7 @@
 </template>
 
 <script>
+import focusDirective from './focusDirective';
   export default {
     props: {
       text: {
@@ -65,6 +64,9 @@
       },
     },
     emits: ['delete', 'text', 'checked'],
+    directives: {
+      focus: focusDirective
+    },
     data() {
       return {
         edit: true,
